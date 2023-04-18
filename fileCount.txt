@@ -1,0 +1,18 @@
+Número de imagens em cada pasta do dataset:
+
+backwards 1122
+carry 1434
+end_comm 2636
+four 470
+mosaic 452
+one 322
+start_comm 3640
+two 808
+boat 738
+down 924
+five 96
+here 522
+num_delimiter 1984
+photo 1850
+three 776
+up 704
