@@ -1,5 +1,3 @@
-Número de imagens em cada pasta do dataset:
-
 backwards 1122
 carry 1434
 end_comm 2636
