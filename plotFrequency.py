@@ -1,19 +1,17 @@
 import matplotlib.pyplot as plt
-
-
+import os
 def main():
     count = []
     folder = []
 
     total = 0
     
-    with open("fileCountEachFolder.txt", "r") as f:
-        data = f.readlines()
-        for line in data:
-            line = line.split()
-            folder.append(line[0])
-            count.append(int(line[1]))
-            total += int(line[1])
+    dataset_path = os.path.join(os.getcwd(), 'dataset')
+    dirs = os.listdir(dataset_path)
+    for dir in dirs:
+        folder.append(dir)
+        count.append(len(os.listdir(os.path.join(dataset_path, dir))))
+        total += count[-1]
 
     # Creating horizontal bar plot
     plt.barh(folder, [100 * x / total for x in count], color='green')
