@@ -6,7 +6,7 @@ folders = ['down', 'carry', 'start_comm', 'up', 'five', 'four', 'num_delimiter',
            'one', 'two', 'end_comm', 'here', 'mosaic', 'backwards', 'three', 'boat', 'photo']
 
 # Set the directory where the images are located
-img_dir = os.path.join(os.getcwd(), "dataset")
+img_dir = os.path.join(os.getcwd(), "dataset_colors")
 print(img_dir)
 # Set the directory where you want to save the resized and grayscale images
 out_dir = os.path.join(os.getcwd(), "dataset", "grayScale")
