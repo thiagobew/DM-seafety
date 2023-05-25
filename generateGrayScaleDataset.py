@@ -6,11 +6,11 @@ folders = ['down', 'carry', 'start_comm', 'up', 'five', 'four', 'num_delimiter',
            'one', 'two', 'end_comm', 'here', 'mosaic', 'backwards', 'three', 'boat', 'photo']
 
 # Set the directory where the images are located
-img_dir = os.path.join(os.getcwd(), "dataset",
-                       "caddy-gestures-complete-v2-release-all-scenarios-fast.ai")
-
+img_dir = os.path.join(os.getcwd(), "dataset")
+print(img_dir)
 # Set the directory where you want to save the resized and grayscale images
 out_dir = os.path.join(os.getcwd(), "dataset", "grayScale")
+print(out_dir)
 
 # Set the desired size of the resized images
 size = (500, 500)
