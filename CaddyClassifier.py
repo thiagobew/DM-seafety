@@ -153,12 +153,37 @@ class CaddyClassifier:
         model.add(Conv2D(filters=32, kernel_size=(3, 3), activation='relu'))
         model.add(MaxPool2D(pool_size=(2, 2)))
 
+        model.add(Conv2D(filters=32, kernel_size=(3, 3), activation='relu'))
+        model.add(MaxPool2D(pool_size=(2, 2)))
+
+        model.add(Conv2D(filters=32, kernel_size=(3, 3), activation='relu'))
+        model.add(MaxPool2D(pool_size=(2, 2)))
+
         # Flatten layer
         model.add(Flatten())
         units = model.output_shape[1]
 
         # Dense layers
         model.add(Dense(units=units, activation='relu'))
+        
+        units = model.output_shape[1] // 2
+        
+        model.add(Dense(units=units, activation='relu'))
+        
+        units = model.output_shape[1] // 2
+        
+        model.add(Dense(units=units, activation='relu'))
+        
+        units = model.output_shape[1] // 2
+        
+        model.add(Dense(units=units, activation='relu'))
+        
+        units = model.output_shape[1] // 2
+        
+        model.add(Dense(units=units, activation='relu'))
+        
+        units = model.output_shape[1] // 2
+        
         model.add(Dense(units=units, activation='relu'))
 
         # Output layer
@@ -216,5 +241,5 @@ if __name__ == '__main__':
     # TO RUN WITH ALL DATA, REPLACE THE DATASET FOLDER IN ROOT FOR THE caddy-gestures-complete-v2-release-all-scenarios-fast.ai folder in zip file
     # AND RENAME IT TO dataset.
 
-    classifier = CaddyClassifier(image_shape=(64, 64, 3), re_train=False)
+    classifier = CaddyClassifier(image_shape=(200, 200, 3), re_train=False)
     classifier.evaluate()
