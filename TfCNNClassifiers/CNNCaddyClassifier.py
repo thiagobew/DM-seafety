@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 import seaborn as sns
 import zipfile
 import numpy as np
@@ -12,9 +15,9 @@ from keras.models import load_model
 from keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+from data import apply_sobel
 
 # MIGHT BE USEFUL
-
 
 def extract_zip_folder(zip_name: str) -> None:
     """Extracts a zip folder to a given path.
@@ -276,5 +279,6 @@ if __name__ == '__main__':
     # TO RUN WITH ALL DATA, REPLACE THE DATASET FOLDER IN ROOT FOR THE caddy-gestures-complete-v2-release-all-scenarios-fast.ai folder in zip file
     # AND RENAME IT TO dataset.
 
+    apply_sobel("dataset")
     classifier = CaddyClassifier(image_shape=(200, 200, 3), re_train=False)
     classifier.evaluate()

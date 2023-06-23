@@ -225,7 +225,7 @@ if __name__ == '__main__':
     if not exists(os.path.join(images_dir, 'val')):
         data_augmentation(images_dir, NUM_CLASSES=NUM_CLASSES, CLASSES=CLASSES)
         split_train_val()
-        preprocess_images(resizeAndGrayscale)
+        preprocess_images(grayscale)
 
     get_image_count(IMG_DIR=IMG_DIR, CLASSES=CLASSES, NUM_CLASSES=NUM_CLASSES)
     classifier = CaddyClassifier(image_shape=(500, 500), re_train=False)

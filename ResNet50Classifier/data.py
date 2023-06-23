@@ -204,7 +204,7 @@ def apply_sobel(dataset_path:str):
                     
                     io.imsave(path_to_save, edge_sobel, plugin='pil')
 
-def resizeAndGrayscale(folder: str):
+def grayscale(folder: str):
     folders = ['down', 'carry', 'start', 'up', 'five', 'four', 'delimiter',
             'one', 'two', 'end', 'here', 'mosaic', 'backward', 'three', 'boat', 'photo']
     for a in folders:
@@ -234,5 +234,5 @@ if __name__ == '__main__':
 
     data_augmentation(IMG_DIR, CLASSES, NUM_CLASSES)
     split_train_val()
-    preprocess_images(resizeAndGrayscale)
+    preprocess_images(grayscale)
 
