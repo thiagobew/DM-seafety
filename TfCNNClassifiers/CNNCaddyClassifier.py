@@ -110,12 +110,12 @@ class CaddyClassifier:
         return dataset
 
     def _load(self, re_train: bool) -> Sequential:
-        if exists(os.path.join(self._model_path, 'caddy_model.h5')):
+        if exists(os.path.join(self._model_path, 'cnn_caddy_model.h5')):
             if re_train:
                 classifier = self._train()
             else:
                 classifier = load_model(os.path.join(
-                    self._model_path, 'caddy_model.h5'))
+                    self._model_path, 'cnn_caddy_model.h5'))
         else:
             classifier = self._train()
 
@@ -131,7 +131,7 @@ class CaddyClassifier:
                        epochs=50)
 
         # Saves the classifier
-        classifier.save(os.path.join(self._model_path, "caddy_model.h5"))
+        classifier.save(os.path.join(self._model_path, "cnn_caddy_model.h5"))
 
         return classifier
 
