@@ -184,6 +184,7 @@ class CaddyClassifier:
 
         test_classes = ['backward', 'boat', 'carry', 'delimiter', 'down', 'end', 'five', 'four', 'here', 'mosaic', 'none', 'one', 'photo', 'start', 'three', 'two', 'up']
 
+        plt.figure(figsize=(16, 10))
         plt.barh(test_classes, precisions)
         plt.title('Precision')
         plt.ylabel('Precision')
@@ -192,6 +193,7 @@ class CaddyClassifier:
             plt.text(v, i, str(round(v, 2)), color='black', va='center')
         plt.show()
 
+        plt.figure(figsize=(16, 10))
         plt.barh(test_classes, recalls)
         plt.title('Recall')
         plt.ylabel('Recall')
@@ -200,6 +202,7 @@ class CaddyClassifier:
             plt.text(v, i, str(round(v, 2)), color='black', va='center')
         plt.show()
 
+        plt.figure(figsize=(16, 10))
         sns.heatmap(confusion_matrix, annot=True, cmap='Blues', yticklabels=test_classes, xticklabels=test_classes)
         plt.xlabel('Predicted Labels')
         plt.ylabel('True Labels')
@@ -207,7 +210,7 @@ class CaddyClassifier:
         plt.show()
 
         return confusion_matrix
-        
+
 if __name__ == '__main__':
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     images_dir = os.path.join(cur_dir, 'images')

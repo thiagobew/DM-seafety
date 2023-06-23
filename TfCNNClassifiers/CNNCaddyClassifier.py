@@ -221,6 +221,42 @@ class CaddyClassifier:
         plt.ylabel('True Labels')
         plt.title('Confusion Matrix')
         plt.show()
+        
+        for i in range(len(cm)):
+            cm[i] = cm[i]/sum(cm[i])
+
+        precisions = []
+        recalls = []
+        for i in range(len(cm)):
+            precisions.append(cm[i][i]/sum(cm[:,i]))
+            recalls.append(cm[i][i]/sum(cm[i]))
+
+        test_classes = ['backward', 'boat', 'carry', 'delimiter', 'down', 'end', 'five', 'four', 'here', 'mosaic', 'one', 'photo', 'start', 'three', 'two', 'up']
+
+        plt.figure(figsize=(16, 10))
+        plt.barh(test_classes, precisions)
+        plt.title('Precision')
+        plt.ylabel('Precision')
+        plt.xlabel('Classes')
+        for i, v in enumerate(precisions):
+            plt.text(v, i, str(round(v, 2)), color='black', va='center')
+        plt.show()
+
+        plt.figure(figsize=(16, 10))
+        plt.barh(test_classes, recalls)
+        plt.title('Recall')
+        plt.ylabel('Recall')
+        plt.xlabel('Classes')
+        for i, v in enumerate(recalls):
+            plt.text(v, i, str(round(v, 2)), color='black', va='center')
+        plt.show()
+
+        sns.heatmap(cm, annot=True, cmap='Blues', yticklabels=test_classes, xticklabels=test_classes)
+        plt.figure(figsize=(16, 10))
+        plt.xlabel('Predicted Labels')
+        plt.ylabel('True Labels')
+        plt.title('Confusion Matrix')
+        plt.show()
 
         return cm
 

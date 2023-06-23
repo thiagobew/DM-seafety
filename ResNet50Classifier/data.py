@@ -43,7 +43,6 @@ def get_image_count(IMG_DIR, CLASSES, NUM_CLASSES):
         data_summary[split] = split_count
 
     data_summary['total'] = data_summary['train'] + data_summary['test']
-    print(sum(data_summary['test']))
 
     return data_summary
 
