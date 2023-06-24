@@ -1,3 +1,4 @@
 dataset/*
 dataset_colors/*
 ResNet50Classifier/images/*
+TfCNNClassifiers/dataset/*
