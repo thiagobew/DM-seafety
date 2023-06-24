@@ -213,55 +213,45 @@ class CaddyClassifier:
 
         labels = self._test_dataset.classes
 
-        cm = confusion_matrix(labels, predictions)
+        cm = confusion_matrix(labels, predictions, normalize='true')
 
-        # Adjust the figure size as per your preference
-        plt.figure(figsize=(10, 8))
-        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
-
-        # Add labels, title, and other formatting
-        plt.xlabel('Predicted Labels')
-        plt.ylabel('True Labels')
-        plt.title('Confusion Matrix')
-        plt.show()
-        
         for i in range(len(cm)):
             cm[i] = cm[i]/sum(cm[i])
 
         precisions = []
         recalls = []
         for i in range(len(cm)):
-            precisions.append(cm[i][i]/sum(cm[:,i]))
+            precisions.append(cm[i][i]/sum(cm[:, i]))
             recalls.append(cm[i][i]/sum(cm[i]))
 
-        test_classes = ['backward', 'boat', 'carry', 'delimiter', 'down', 'end', 'five', 'four', 'here', 'mosaic', 'one', 'photo', 'start', 'three', 'two', 'up']
+        test_classes = ['backward', 'boat', 'carry', 'delimiter', 'down', 'end', 'five',
+                        'four', 'here', 'mosaic', 'one', 'photo', 'start', 'three', 'two', 'up']
 
         plt.figure(figsize=(16, 10))
         plt.barh(test_classes, precisions)
         plt.title('Precision')
-        plt.ylabel('Precision')
-        plt.xlabel('Classes')
+        plt.xlabel('Precision')
+        plt.ylabel('Classes')
         for i, v in enumerate(precisions):
             plt.text(v, i, str(round(v, 2)), color='black', va='center')
         plt.show()
-
+        
         plt.figure(figsize=(16, 10))
         plt.barh(test_classes, recalls)
         plt.title('Recall')
-        plt.ylabel('Recall')
-        plt.xlabel('Classes')
+        plt.xlabel('Recall')
+        plt.ylabel('Classes')
         for i, v in enumerate(recalls):
             plt.text(v, i, str(round(v, 2)), color='black', va='center')
         plt.show()
 
-        sns.heatmap(cm, annot=True, cmap='Blues', yticklabels=test_classes, xticklabels=test_classes)
         plt.figure(figsize=(16, 10))
+        sns.heatmap(cm, annot=True, cmap='Blues',
+                    yticklabels=test_classes, xticklabels=test_classes)
         plt.xlabel('Predicted Labels')
         plt.ylabel('True Labels')
         plt.title('Confusion Matrix')
         plt.show()
-
-        return cm
 
     def test(self) -> np.ndarray:
         predictions = self._model.predict(self._test_dataset)
@@ -274,11 +264,10 @@ class CaddyClassifier:
 
         return cm
 
-
 if __name__ == '__main__':
     # TO RUN WITH ALL DATA, REPLACE THE DATASET FOLDER IN ROOT FOR THE caddy-gestures-complete-v2-release-all-scenarios-fast.ai folder in zip file
     # AND RENAME IT TO dataset.
 
-    apply_sobel("dataset")
+    #apply_sobel("dataset")
     classifier = CaddyClassifier(image_shape=(200, 200, 3), re_train=False)
     classifier.evaluate()

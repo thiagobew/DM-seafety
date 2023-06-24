@@ -200,8 +200,8 @@ class CaddyClassifier:
         plt.figure(figsize=(16, 10))
         plt.barh(test_classes, precisions)
         plt.title('Precision')
-        plt.ylabel('Precision')
-        plt.xlabel('Classes')
+        plt.xlabel('Precision')
+        plt.ylabel('Classes')
         for i, v in enumerate(precisions):
             plt.text(v, i, str(round(v, 2)), color='black', va='center')
         plt.show()
@@ -209,8 +209,8 @@ class CaddyClassifier:
         plt.figure(figsize=(16, 10))
         plt.barh(test_classes, recalls)
         plt.title('Recall')
-        plt.ylabel('Recall')
-        plt.xlabel('Classes')
+        plt.xlabel('Recall')
+        plt.ylabel('Classes')
         for i, v in enumerate(recalls):
             plt.text(v, i, str(round(v, 2)), color='black', va='center')
         plt.show()
